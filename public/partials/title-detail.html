@@ -1,13 +1,21 @@
-<h1>{{title.TitleName}}</h1>
-<h4>{{title.TitleType}}</h4>
+<div ng-show="title">
+  <h1>{{title.TitleName}}</h1>
+  <h4>{{title.TitleType}}, released {{title.ReleaseYear}}</h4>
 
-<h2>Overview</h2>
-  <strong>Release Date:</strong>
-  <p>{{title.ReleaseYear}}</p>
+  <strong>Rating:</strong>
+  <p>{{title.Ratings[0].RatingDescriptors[0].Rating}}</p>
 
   <strong>Genres:</strong>
   <p ng-if="title.Genres">{{title.Genres | commaSeparated}}</p>
 
   <strong>Synopsis:</strong> 
   <p>{{title.Storylines[0].Description}}</p>
-<div>
+
+  <strong>Notable People:</strong>
+  <ul>
+    <li ng-repeat="participant in keyParticipants">
+      {{participant.Name}} - {{participant.RoleType}}
+    </li>
+  </ul>
+
+</div>

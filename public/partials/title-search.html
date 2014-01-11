@@ -2,7 +2,13 @@
 <form name="searchForm" class="row" ng-submit="filterByName()">
   <div class="col-lg-4">
     <div class="input-group">
-      <input name="search" class="form-control" type="text" ng-model="searchText" ng-required="true" />
+      <input 
+        name="search"
+        class="form-control" 
+        placeholder="What's the name of the program you're looking for?"
+        type="text" 
+        ng-model="searchText" 
+        ng-required="true" />
       <span class="input-group-btn">
         <button 
           class="btn btn-primary" 

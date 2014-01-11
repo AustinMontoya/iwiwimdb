@@ -31,13 +31,16 @@ describe('service', function() {
 
       Title.findByName('i', function(results) { titles = results; });
       $httpBackend.flush();
-      
+
       expect(titles.length).toEqual(1);
     });
 
-    it('gets a particular title by id', function () {
-      var title = Title.get('abc123');
+    it('gets a particular title by id', function () {     
+      var title;
+
+      Title.get('abc123', function (result) { title = result; });
       $httpBackend.flush();
+      
       expect(title.TitleId).toEqual('abc123');
     });
 

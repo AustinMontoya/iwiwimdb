@@ -3,6 +3,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', [
   'ngRoute',
+  'ngAnimate',
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
@@ -23,6 +24,6 @@ config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/title-detail.html', 
         controller: 'TitleDetailCtrl'
       });
-    
+
   $routeProvider.otherwise({redirectTo: '/search'});
 }]);

@@ -35,5 +35,20 @@ angular.module('myApp.controllers', []).
   }])
 
   .controller('TitleDetailCtrl', ['Title', '$routeParams', '$scope', function (Title, $routeParams, $scope) {
-    $scope.title = Title.get($routeParams.titleId);
+    Title.get($routeParams.titleId, function (title) {
+      $scope.title = title;
+      $scope.keyParticipants = getKeyParticipants(title); // for convenience
+    });
+
+    function getKeyParticipants(title) {
+      return title.Participants
+        .filter(function (participant) { return participant.IsKey; })
+        .map(function (participant) {
+          return {
+            RoleType: participant.RoleType,
+            Name: participant.Name  
+          };          
+        });
+    }
+
   }]);
