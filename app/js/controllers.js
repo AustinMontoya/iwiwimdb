@@ -3,8 +3,15 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('TitleListCtrl', [function() {
+  controller('TitleSearchCtrl', ['Title', function (Title) {
+    $scope.searchText = '';
+
     $scope.filterByName = function() {
-      throw "Not implemented";
+      $scope.titles = Title.findByName($scope.searchText);
     }
+
+  }])
+
+  .controller('TitleDetailCtrl', ['Title', '$routeParams', function (Title, $routeParams) {
+    $scope.title = Title.get($routeParams.titleId);
   }]);
