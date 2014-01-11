@@ -2,7 +2,7 @@
 <form name="searchForm" class="row" ng-submit="filterByName()">
   <div class="col-lg-4">
     <div class="input-group">
-      <input class="form-control" type="text" ng-model="searchText" ng-required />
+      <input name="search" class="form-control" type="text" ng-model="searchText" ng-required="true" />
       <span class="input-group-btn">
         <button 
           class="btn btn-primary" 
@@ -14,9 +14,12 @@
   </div>
 </form>
 
-<h3>Results</h3>
+<h3 ng-show="loaded">Results</h3>
 <ul class="list-group">
   <li class="list-group-item" ng-repeat="title in titles">
     <a href='#/title/{{title.TitleId}}'>{{title.TitleName}}</a>
   </li>
 </ul>
+<div ng-show="loaded && !titles.length">
+    No results found.
+</div>

@@ -27,8 +27,11 @@ describe('service', function() {
     }));
 
     it('fetches a list of titles containing "name"', function () {
-      var titles = Title.findByName('i');
+      var titles;
+
+      Title.findByName('i', function(results) { titles = results; });
       $httpBackend.flush();
+      
       expect(titles.length).toEqual(1);
     });
 

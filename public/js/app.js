@@ -9,7 +9,20 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {templateUrl: 'partials/title-search.html', controller: 'TitleSearchCtrl'});
-  $routeProvider.when('/title/:titleId', {templateUrl: 'partials/title-detail.html', controller: 'TitleDetailCtrl'});
-  $routeProvider.otherwise({redirectTo: '/'});
+  $routeProvider
+    .when('/search', 
+      {
+        templateUrl: 'partials/title-search.html', 
+        controller: 'TitleSearchCtrl',
+        reloadOnSearch: false
+      });
+
+  $routeProvider
+    .when('/title/:titleId', 
+      {
+        templateUrl: 'partials/title-detail.html', 
+        controller: 'TitleDetailCtrl'
+      });
+    
+  $routeProvider.otherwise({redirectTo: '/search'});
 }]);

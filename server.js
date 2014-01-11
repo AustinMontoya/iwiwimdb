@@ -13,7 +13,7 @@ Mongo.connect(connString, function (err, db) {
   }
 
   titles = db.collection("titles");
-})
+});
 
 app.use(express.logger());
 app.use(express.static(__dirname + '/public'));
@@ -34,11 +34,12 @@ app.get('/titles', function (req, res) {
 
   var options = {
     sort: "TitleNameSortable"
-  }
+  };
 
   titles.find(query, fields, options).toArray(function (err, items) {
     res.send(items);
-  })
+  });
+  
 });
 
 app.get('/title/:titleId', function (req, res) {
