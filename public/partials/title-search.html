@@ -1,0 +1,22 @@
+<h1>Search for Titles</h1>
+<form name="searchForm" class="row" ng-submit="filterByName()">
+  <div class="col-lg-4">
+    <div class="input-group">
+      <input class="form-control" type="text" ng-model="searchText" ng-required />
+      <span class="input-group-btn">
+        <button 
+          class="btn btn-primary" 
+          type="submit"
+          ng-disabled="searchForm.$invalid">
+          Search
+        </button>
+    </div>
+  </div>
+</form>
+
+<h3>Results</h3>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="title in titles">
+    <a href='#/title/{{title.TitleId}}'>{{title.TitleName}}</a>
+  </li>
+</ul>
