@@ -69,31 +69,12 @@ angular.module('myApp.controllers', []).
     $scope.remove = Favorites.remove;
   }])
 
-  .controller('NavigationCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
-    var currentRoute;
+  .controller('NavigationCtrl', ['Favorites', '$scope', '$rootScope', '$location', function (Favorites, $scope, $rootScope, $location) {
+    $scope.favoritesCount = function () {
+      return Favorites.getAll().length;
+    }
 
-    $scope.nav = {
-      '/search': {
-        label: 'Search',
-        active: false
-      },
-      '/favorites': {
-        label: 'Favorites',
-        active: false
-      }
-    };
-
-    $rootScope.$on('$routeChangeSuccess', function (e, current) {
-      var newRoute = $location.path();
-      if (!$scope.nav[newRoute]) {
-        return; // We only want routes currently in our navbar
-      }
-
-      if ($scope.nav[currentRoute]) {
-        $scope.nav[currentRoute].active = false;  
-      }
-      
-      $scope.nav[newRoute].active = true;
-      currentRoute = newRoute;
+    $rootScope.$on('$routeChangeSuccess', function () {
+      $scope.activeRoute = $location.path();
     });
   }]);

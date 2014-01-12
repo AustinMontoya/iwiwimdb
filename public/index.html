@@ -16,8 +16,13 @@
           <div class="logo-subtext">Shoddily imitating IMDB since 2014.</div>
         </div>
         <ul ng-cloak class="nav nav-pills nav-stacked" ng-controller="NavigationCtrl">
-          <li ng-repeat="(route, navItem) in nav" ng-class="{'active': navItem.active}">
-            <a href='#{{route}}'>{{navItem.label}}</a>
+          <li ng-class="{'active': activeRoute == '/search'}">
+            <a href="#/search">Search</a>
+          </li>
+          <li ng-class="{'active': activeRoute == '/favorites'}">
+            <a href="#/favorites">Favorites
+              <span class="badge" ng-show="favoritesCount() > 0">{{favoritesCount()}}</span>
+            </a>
           </li>
         </ul>
       </div>
