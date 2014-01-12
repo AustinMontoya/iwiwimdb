@@ -34,21 +34,32 @@ angular.module('myApp.controllers', []).
     loadFromLocation();
   }])
 
-  .controller('TitleDetailCtrl', ['Title', '$routeParams', '$scope', function (Title, $routeParams, $scope) {
+  .controller('TitleDetailCtrl', ['Title', 'Favorites', '$routeParams', '$scope', function (Title, Favorites, $routeParams, $scope) {
     Title.get($routeParams.titleId, function (title) {
       $scope.title = title;
+      $scope.isFavorite = Favorites.isFavorite(title.TitleId);
       $scope.keyParticipants = getKeyParticipants(title); // for convenience
     });
 
+    $scope.addFavorite = function () {
+      Favorites.add($scope.title.TitleId, $scope.title.TitleName);
+      $scope.isFavorite = true;
+    };
+
+    $scope.removeFavorite = function() {
+      Favorites.remove($scope.title.TitleId);
+      $scope.isFavorite = false;
+    };
+
     function getKeyParticipants(title) {
       return title.Participants
-        .filter(function (participant) { return participant.IsKey; })
+        .filter(function (participant) { 
+          return participant.IsKey; })
         .map(function (participant) {
           return {
             RoleType: participant.RoleType,
             Name: participant.Name  
-          };          
-        });
+          }; });
     }
 
   }])

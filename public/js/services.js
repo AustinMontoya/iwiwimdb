@@ -36,14 +36,13 @@ angular.module('myApp.services', []).
       return -1;
     }
 
-    this.add = function (favorite) {
-      favorites.push(favorite);
+    this.add = function (id, name) {
+      favorites.push({id: id, name: name});
       save();
     };
 
     this.remove = function (id) {
       var index = getIndexById(id);
-      console.log("Index: " + index);
       if (index > -1) {
         favorites.splice(index, 1);
       }

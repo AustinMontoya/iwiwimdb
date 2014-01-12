@@ -2,6 +2,11 @@
   <h1>{{title.TitleName}}</h1>
   <h4>{{title.TitleType}}, released {{title.ReleaseYear}}</h4>
 
+  <div class="pull-right">
+    <button ng-show="!isFavorite" class='btn btn-primary' ng-click="addFavorite()">Add as Favorite</button>
+    <button ng-show="isFavorite" class="btn btn-primary" ng-click="removeFavorite()">Remove from Favorites</button>
+  </div>
+
   <strong>Rating:</strong>
   <p>{{title.Ratings[0].RatingDescriptors[0].Rating}}</p>
 
