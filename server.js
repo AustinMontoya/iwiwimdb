@@ -15,7 +15,6 @@ Mongo.connect(connString, function (err, db) {
   titles = db.collection("titles");
 });
 
-app.use(express.logger());
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
@@ -28,6 +27,7 @@ app.get('/titles', function (req, res) {
     TitleId: true
   };
 
+  // Probably not xss-safe
   var query = {
     $where: "this.TitleName.toLowerCase().indexOf('" + req.query.name.toLowerCase() + "') > -1"
   };

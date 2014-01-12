@@ -2,9 +2,11 @@
 <ul class="list-group">
   <li class="list-group-item" ng-repeat="favorite in favorites">
     <a href="#/title/{{favorite.id}}">{{favorite.name}}</a>
-    <i class='icon-delete' ng-click="remove(favorite)">Remove</i>
+    <div class="pull-right">
+      <button class="btn-remove-favorite btn btn-sm btn-danger" ng-click="remove(favorite.id)">Remove</button>
+    </div>
   </li>
 </ul>
-<div ng-hide="favorites">
+<div ng-show="!favorites.length">
   You don't currently have any favorites. Try <a href="#/search">searching</a> for one!
 </div>

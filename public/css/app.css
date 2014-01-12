@@ -20,3 +20,8 @@
 .logo-subtext {
   font-size: 0.8em;
 }
+
+.btn-remove-favorite {
+  position: relative;
+  top: -5px;
+}
