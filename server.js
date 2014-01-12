@@ -5,14 +5,9 @@ var express = require('express');
 var app = express();
 
 var connString = 'mongodb://readuser:reader1234@SG-mssmongodev02-874.servers.mongodirector.com:27017/dev-test';
-var titles;
+var titles, server;
 
 Mongo.connect(connString, function (err, db) {
-  if (err) {
-    console.log(err);
-    app.close();
-  }
-
   titles = db.collection("titles");
 });
 
@@ -41,7 +36,6 @@ app.get('/titles', function (req, res) {
   titles.find(query, fields, options).toArray(function (err, items) {
     res.send(items);
   });
-  
 });
 
 app.get('/title/:titleId', function (req, res) {
@@ -53,4 +47,4 @@ app.get('/title/:titleId', function (req, res) {
   });
 });
 
-app.listen(3000);
+server = app.listen(3000);

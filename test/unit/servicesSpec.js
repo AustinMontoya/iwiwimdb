@@ -2,7 +2,7 @@
 
 describe('service', function() {
   var Title, $httpBackend;
-  beforeEach(module('myApp.services'));
+  beforeEach(module('iwiwimdb.services'));
   
   describe('Titles', function () {
     beforeEach(inject(function(_$httpBackend_, _Title_){

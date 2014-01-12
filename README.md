@@ -1,6 +1,6 @@
 # IWIWIMDB (I wish I were IMDB)
 
-IWIWIMDB is a simple single page app built with Bootstrap 3, Angular, and Express.
+IWIWIMDB is a simple single page app built with Bootstrap 3, Angular, and Express. In addition to meeting the requirements of searching and displaying details, it also contains a favorites feature based on localStorage. It also has a decent amount of client-side unit testing coverage
 
 ## Installation
 1. Clone this repo
@@ -13,7 +13,7 @@ IWIWIMDB is a simple single page app built with Bootstrap 3, Angular, and Expres
 1. Install karma:
 ```npm install -g karma```
 
-To run the unit tests:
+2. Run the tests (ctrl+c to close):
 ```scripts/test.sh```
 
 ## Some notes:

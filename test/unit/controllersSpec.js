@@ -3,7 +3,7 @@
 describe('controllers', function(){
   var scope;
 
-  beforeEach(module('myApp.controllers'));
+  beforeEach(module('iwiwimdb.controllers'));
   beforeEach(inject(function($rootScope) {
     scope = $rootScope.$new();
   }));

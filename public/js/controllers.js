@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', ['myApp.services', 'ngRoute']).
+angular.module('iwiwimdb.controllers', ['iwiwimdb.services', 'ngRoute']).
   controller('TitleSearchCtrl', ['Title', '$scope', '$location', function (Title, $scope, $location) {
     /* Scope variables */
     $scope.searchText = '';

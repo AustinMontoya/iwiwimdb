@@ -1,7 +1,7 @@
 'use strict';
 
 describe('filter', function() {
-  beforeEach(module('myApp.filters'));
+  beforeEach(module('iwiwimdb.filters'));
 
   describe('commaSeparated', function (){
     it('turns an array of strings into a single string with the array items separated by commas', inject(function($filter){

@@ -1,7 +1,7 @@
 'use strict';
 
 /* Services */
-angular.module('myApp.services', []).
+angular.module('iwiwimdb.services', []).
 
   service("Title", ['$http', '$q', function ($http, $q) {
     this.get = function (id, callback) {

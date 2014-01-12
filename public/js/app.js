@@ -1,20 +1,19 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
-angular.module('myApp', [
+angular.module('iwiwimdb', [
   'ngRoute',
   'ngAnimate',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.controllers'
+  'iwiwimdb.filters',
+  'iwiwimdb.services',
+  'iwiwimdb.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/search', {
-        templateUrl: 'partials/title-search.html', 
-        controller: 'TitleSearchCtrl',
-        reloadOnSearch: false
-      });
+      templateUrl: 'partials/title-search.html', 
+      controller: 'TitleSearchCtrl',
+      reloadOnSearch: false
+    });
 
   $routeProvider
     .when('/title/:titleId', {
