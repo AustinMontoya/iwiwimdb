@@ -17,7 +17,7 @@ angular.module('myApp.services', []).
   .service("Favorites", function () {
     var favorites, favesFromStorage;
 
-    var favesFromStorage = localStorage.getItem('favorites');
+    favesFromStorage = localStorage.getItem('favorites');
     favorites = favesFromStorage ? JSON.parse(favesFromStorage) : [];
 
     function save() {

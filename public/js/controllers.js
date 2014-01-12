@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
+angular.module('myApp.controllers', ['myApp.services', 'ngRoute']).
   controller('TitleSearchCtrl', ['Title', '$scope', '$location', function (Title, $scope, $location) {
     /* Scope variables */
     $scope.searchText = '';
@@ -69,12 +69,12 @@ angular.module('myApp.controllers', []).
     $scope.remove = Favorites.remove;
   }])
 
-  .controller('NavigationCtrl', ['Favorites', '$scope', '$rootScope', '$location', function (Favorites, $scope, $rootScope, $location) {
+  .controller('NavigationCtrl', ['Favorites', '$scope', '$location', function (Favorites, $scope, $location) {
     $scope.favoritesCount = function () {
       return Favorites.getAll().length;
-    }
+    };
 
-    $rootScope.$on('$routeChangeSuccess', function () {
+    $scope.$on('$routeChangeSuccess', function () {
       $scope.activeRoute = $location.path();
     });
   }]);

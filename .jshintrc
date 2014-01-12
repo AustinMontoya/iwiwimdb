@@ -1,4 +1,15 @@
 {
-	"globals": { "angular": false },
+	"globals": { 
+    "angular": false,
+    "localStorage": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "spyOn": false,
+    "inject": false,
+    "module": false,
+    "it": false,
+    "expect": false,
+    "describe": false
+  },
 	"globalstrict": true
 }

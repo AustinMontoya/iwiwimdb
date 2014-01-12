@@ -1,5 +1,6 @@
-var Mongo = require('mongodb');
+/* jshint strict: false */
 
+var Mongo = require('mongodb');
 var express = require('express');
 var app = express();
 
@@ -27,7 +28,8 @@ app.get('/titles', function (req, res) {
     TitleId: true
   };
 
-  // Probably not xss-safe
+  // Might be vulnerable to some kind of injection attack
+  // This could probably be converted into $regex with the proper escaping
   var query = {
     $where: "this.TitleName.toLowerCase().indexOf('" + req.query.name.toLowerCase() + "') > -1"
   };

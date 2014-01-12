@@ -49,7 +49,7 @@ describe('service', function() {
     var testRecords = [
       {id: 12345, name: 'Iron Man'},
       {id: 34567, name: 'Battle Royale'}
-    ]
+    ];
 
     function getFavoritesInStorage() {
       var items = localStorage.getItem('favorites');
@@ -69,7 +69,7 @@ describe('service', function() {
     });
 
     it('adds a favorite', function () {
-      Favorites.add({id: 1234558, name: 'Iron Man 2'});
+      Favorites.add(1234558, 'Iron Man 2');
       var actualItems = getFavoritesInStorage();
       expect(actualItems[2].name).toEqual('Iron Man 2');
     });
@@ -82,19 +82,16 @@ describe('service', function() {
     });
 
     it('gets a list of current favorites', function () {
-    
       var favorites = Favorites.getAll();
       expect(favorites.length).toEqual(testRecords.length);
     });
 
-    it('checks to see whether a favorite exists', function () {      
-
+    it('identifies whether a favorite exists', function () {
       var exists = Favorites.isFavorite(testRecords[0].id);
       expect(exists).toEqual(true);
 
       exists = Favorites.isFavorite(4848343); // not an id in the test records
       expect(exists).toEqual(false);
     });
-
-  })
+  });
 });
