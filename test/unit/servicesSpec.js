@@ -40,9 +40,63 @@ describe('service', function() {
 
       Title.get('abc123', function (result) { title = result; });
       $httpBackend.flush();
-      
+
       expect(title.TitleId).toEqual('abc123');
     });
 
   });
+
+  describe('Favorites', function () {
+    var Favorites;
+    var testRecords = [
+      {id: 12345, name: 'Iron Man'},
+      {id: 34567, name: 'Battle Royale'}
+    ]
+
+    function getFavoritesInStorage() {
+      var items = localStorage.getItem('favorites');
+      return items ? JSON.parse(items) : [];
+    }
+
+    beforeEach(function () {
+      localStorage.setItem('favorites', JSON.stringify(testRecords));
+
+      inject(function (_Favorites_) {
+        Favorites = _Favorites_;
+      });
+    });
+
+    afterEach(function() {
+      localStorage.removeItem('favorites');
+    });
+
+    it('adds a favorite', function () {
+      Favorites.add({id: 1234558, name: 'Iron Man 2'});
+      var actualItems = getFavoritesInStorage();
+      expect(actualItems[2].name).toEqual('Iron Man 2');
+    });
+
+    it('removes a favorite', function () {
+      Favorites.remove(testRecords[0].id);
+
+      var actualItems = getFavoritesInStorage();
+      expect(actualItems.length).toEqual(1);
+    });
+
+    it('gets a list of current favorites', function () {
+    
+      var favorites = Favorites.getAll();
+      expect(favorites.length).toEqual(testRecords.length);
+    });
+
+    it('checks to see whether a favorite exists', function () {      
+
+      var exists = Favorites.isFavorite(testRecords[0].id);
+      expect(exists).toEqual(true);
+
+      exists = Favorites.isFavorite(4848343); // not an id in the test records
+      expect(exists).toEqual(false);
+    });
+
+  })
 });

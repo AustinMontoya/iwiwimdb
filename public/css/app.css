@@ -9,6 +9,10 @@
   opacity: 1;
 }
 
+.logo {
+  margin-bottom: 20px;
+}
+
 .logo-subtext {
   font-size: 0.8em;
 }
