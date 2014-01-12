@@ -51,4 +51,38 @@ angular.module('myApp.controllers', []).
         });
     }
 
+  }])
+
+  .controller('FavoritesCtrl', ['Favorites', '$scope', function (Favorites, $scope){
+    $scope.favorites = Favorites.getAll();
+    $scope.remove = Favorites.remove;
+  }])
+
+  .controller('NavigationCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+    var currentRoute;
+
+    $scope.nav = {
+      '/search': {
+        label: 'Search',
+        active: false
+      },
+      '/favorites': {
+        label: 'Favorites',
+        active: false
+      }
+    };
+
+    $rootScope.$on('$routeChangeSuccess', function (e, current) {
+      var newRoute = $location.path();
+      if (!$scope.nav[newRoute]) {
+        return; // We only want routes currently in our navbar
+      }
+
+      if ($scope.nav[currentRoute]) {
+        $scope.nav[currentRoute].active = false;  
+      }
+      
+      $scope.nav[newRoute].active = true;
+      currentRoute = newRoute;
+    });
   }]);

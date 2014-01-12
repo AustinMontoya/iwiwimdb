@@ -15,9 +15,10 @@
           <h3>IWIWIMDB</h3>
           <div class="logo-subtext">Shoddily imitating IMDB since 2014</div>
         </div>
-        <ul class="nav nav-pills nav-stacked">
-          <li><a href='#/search'>Search</a></li>
-          <li><a href='#/favorites'>Favorites</a></li>
+        <ul class="nav nav-pills nav-stacked" ng-controller="NavigationCtrl">
+          <li ng-repeat="(route, navItem) in nav" ng-class="{'active': navItem.active}">
+            <a href='#{{route}}'>{{navItem.label}}</a>
+          </li>
         </ul>
       </div>
       <div class="col-sm-9 col-md-9 col-lg-9">
